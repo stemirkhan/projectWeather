@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 class RequestToAPI : public QObject
 {
@@ -11,8 +13,13 @@ class RequestToAPI : public QObject
 public:
     explicit RequestToAPI(QObject *parent = nullptr);
     QNetworkAccessManager *manager;
-    QNetworkRequest *rq;
-    QByteArray get_requests_to_api(QString url);
+    QNetworkRequest rq;
+    QNetworkReply *repl;
+    QByteArray data_buffer;
+
+public slots:
+    void get_data(QString url);
+    void readData();
 
 signals:
 

@@ -17,12 +17,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QByteArray data_buffer = my_request->get_requests_to_api("http://ip-api.com/json/");
-
-    QJsonObject data = QJsonDocument::fromJson(data_buffer).object();
-    QString ip = data["query"].toString();
-
-    ui->textEdit->setText(ip);
-    qDebug() << "fddfd";
+    my_request->get_data("http://ip-api.com/json/");
 }
 
