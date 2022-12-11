@@ -12,10 +12,12 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    parsedata.cpp \
     requesttoapi.cpp
 
 HEADERS += \
     mainwindow.h \
+    parsedata.h \
     requesttoapi.h
 
 FORMS += \

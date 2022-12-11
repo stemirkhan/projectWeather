@@ -6,6 +6,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <parsedata.h>
 
 class RequestToAPI : public QObject
 {
@@ -24,7 +25,7 @@ private slots:
     void respone_handler(QNetworkReply *repl);
 
 signals:
-    void handler_finished(QJsonObject data);
+    void handler_finished(QList<QJsonValue> data);
 };
 
 #endif // REQUESTTOAPI_H
