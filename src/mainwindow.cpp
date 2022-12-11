@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     my_request = new RequestToAPI();
-    //my_request->send_request("http://ip-api.com/json/24.48.0.1");
+    my_request->send_request("http://api.openweathermap.org/data/2.5/forecast?q=Voronezh&appid=7c88289d3a5d79050c2e473adc10dad0&lang=ru");
     connect(my_request, &RequestToAPI::handler_finished, this, &MainWindow::update_view);
 
 }
