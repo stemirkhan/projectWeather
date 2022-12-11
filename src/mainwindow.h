@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <requesttoapi.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -13,9 +14,13 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    RequestToAPI *my_request;
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void update_view(QJsonObject data);
 };
 #endif // MAINWINDOW_H
