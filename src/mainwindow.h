@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <requesttoapi.h>
+#include <QPixmap>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,6 +22,7 @@ private:
     Ui::MainWindow *ui;
 
 private slots:
-    void update_view(QJsonObject data);
+    void update_view(QList<QJsonValue> data);
+    void on_search_button_clicked();
 };
 #endif // MAINWINDOW_H

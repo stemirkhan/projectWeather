@@ -18,6 +18,7 @@ void RequestToAPI::respone_handler(QNetworkReply *repl)
     {
         QByteArray data_buffer = repl->readAll();
         data = QJsonDocument::fromJson(data_buffer).object();
-        emit handler_finished(data);
+        ParseData parse_respon_data(data);
+        emit handler_finished(parse_respon_data.parse_data());
     }
 }
