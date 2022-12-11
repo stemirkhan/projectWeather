@@ -25,7 +25,7 @@ private slots:
     void respone_handler(QNetworkReply *repl);
 
 signals:
-    void handler_finished(QList<QJsonValue> data);
+    void handler_finished(QList<QMap<QString, QString>> data);
 };
 
 #endif // REQUESTTOAPI_H

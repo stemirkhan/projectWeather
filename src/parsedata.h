@@ -11,7 +11,7 @@ class ParseData : public QObject
 public:
     explicit ParseData(QObject *parent = nullptr);
     ParseData (QJsonObject data);
-    QList<QJsonValue> parse_data();
+    QList<QMap<QString, QString>> parse_data();
 
 private:
     QJsonObject data;

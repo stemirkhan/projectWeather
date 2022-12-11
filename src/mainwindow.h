@@ -21,8 +21,9 @@ public:
 private:
     Ui::MainWindow *ui;
 
+
 private slots:
-    void update_view(QList<QJsonValue> data);
+    void update_view(QList<QMap<QString, QString>> data);
     void on_search_button_clicked();
 };
 #endif // MAINWINDOW_H
