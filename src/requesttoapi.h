@@ -12,17 +12,19 @@ class RequestToAPI : public QObject
     Q_OBJECT
 public:
     explicit RequestToAPI(QObject *parent = nullptr);
+
+private:
     QNetworkAccessManager *manager;
-    QNetworkRequest rq;
-    QNetworkReply *repl;
-    QByteArray data_buffer;
+    QJsonObject data;
 
 public slots:
-    void get_data(QString url);
-    void readData();
+    void send_request(QString url);
+
+private slots:
+    void respone_handler(QNetworkReply *repl);
 
 signals:
-
+    void handler_finished(QJsonObject data);
 };
 
 #endif // REQUESTTOAPI_H

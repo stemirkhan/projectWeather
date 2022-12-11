@@ -4,22 +4,20 @@ RequestToAPI::RequestToAPI(QObject *parent)
     : QObject{parent}
 {
     manager = new QNetworkAccessManager(this);
+    connect(manager, &QNetworkAccessManager::finished, this, &RequestToAPI::respone_handler);
 }
 
-void RequestToAPI::get_data(QString url)
+void RequestToAPI::send_request(QString url)
 {
-    QNetworkRequest rq{QUrl(url)};
-    repl = manager->get(rq);
-    connect(repl, &QNetworkReply::finished, this, &RequestToAPI::readData);
+    manager->get(QNetworkRequest(QUrl(url)));
 }
 
-void RequestToAPI::readData()
+void RequestToAPI::respone_handler(QNetworkReply *repl)
 {
-    data_buffer.append(repl->readAll());
-    QJsonObject data = QJsonDocument::fromJson(data_buffer).object();
-    qDebug() << data;
+    if(!repl->error())
+    {
+        QByteArray data_buffer = repl->readAll();
+        data = QJsonDocument::fromJson(data_buffer).object();
+        emit handler_finished(data);
+    }
 }
-
-
-
-

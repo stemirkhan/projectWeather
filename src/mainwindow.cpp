@@ -7,6 +7,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     my_request = new RequestToAPI();
+    //my_request->send_request("http://ip-api.com/json/24.48.0.1");
+    connect(my_request, &RequestToAPI::handler_finished, this, &MainWindow::update_view);
+
 }
 
 MainWindow::~MainWindow()
@@ -14,9 +17,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-void MainWindow::on_pushButton_clicked()
+void MainWindow::update_view(QJsonObject data)
 {
-    my_request->get_data("http://ip-api.com/json/");
+    qDebug() << data;
 }
-
